@@ -1,2 +1,0 @@
-# stedyspeech
-still learning
