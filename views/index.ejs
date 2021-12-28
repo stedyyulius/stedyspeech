@@ -4,100 +4,47 @@
 		<title>Speech to text converter in JS</title>
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" />
 		
-					</head>
-					<body>
-						<h4 align="center">Speech to text converter in JS</h4>
-            <form action="/sapi" method="post">
-              <!-- <div id="result"></div> -->
-              <input type="text" name="test" id="result">
-              <!-- <textarea id="result" name="tai" rows="4" cols="50"></textarea> -->
-              <button type="submit">babi</button>
-            </form>
-						
-            <!-- <form class="" action="index.html" method="post">
-              <input type="text" name="input" value="finalTranscripts">
-            </form> -->
-						<button onclick="startConverting();"><i class="fa fa-microphone"></i></button>
-						<script type="text/javascript">
-
-							var r = document.getElementById('result');
-
-							function startConverting () {
-								if('webkitSpeechRecognition' in window){
-									var speechRecognizer = new webkitSpeechRecognition();
-									speechRecognizer.continuous = true;
-									speechRecognizer.interimResults = true;
-									speechRecognizer.lang = 'en-IN';
-									speechRecognizer.start();
-                  
-									var finalTranscripts = '';
-
-									speechRecognizer.onresult = function(event){
-										var interimTranscripts = '';
-										for(var i = event.resultIndex; i < event.results.length; i++){
-											var transcript = event.results[i][0].transcript;
-											transcript.replace("\n", "<br>");
-											if(event.results[i].isFinal){
-												finalTranscripts += transcript;
-											}else{
-												interimTranscripts += transcript;
-											}
-										}
-										r.value = finalTranscripts;
-          
-                    //r.innetHTML = interimTranscripts
-									};
-									speechRecognizer.onerror = function (event) {
-									};
-								}else{
-									r.innerHTML = 'Your browser is not supported. If google chrome, please upgrade!';
-								}
-							}
-						</script>
-					</body>
-				</html>	
-		</style>
 	</head>
 	<body>
-		<!-- <h4 align="center">Speech to text converter in JS</h4>
-		<div id="result"></div>
-		<button onclick="startConverting();"><i class="fa fa-microphone"></i></button>
-		<script type="text/javascript">
+		<h4 align="center">Speech to text converter in JS</h4>
+              <textarea id="result" rows="4" cols="50"></textarea>
 
-			var r = document.getElementById('result');
+			<button onclick="startConverting();"><i class="fa fa-microphone"></i></button>
+			<script type="text/javascript">
 
-			function startConverting () {
-				if('webkitSpeechRecognition' in window){
-					var speechRecognizer = new webkitSpeechRecognition();
-					speechRecognizer.continuous = true;
-					speechRecognizer.interimResults = true;
-					speechRecognizer.lang = 'en-IN';
-					speechRecognizer.start();
+				var r = document.getElementById('result');
 
-					var finalTranscripts = '';
+				function startConverting () {
+					if('webkitSpeechRecognition' in window){
+						var speechRecognizer = new webkitSpeechRecognition();
+						speechRecognizer.continuous = true;
+						speechRecognizer.interimResults = true;
+						speechRecognizer.lang = 'en-IN';
+						speechRecognizer.start();
+		
+						var finalTranscripts = '';
 
-					speechRecognizer.onresult = function(event){
-						var interimTranscripts = '';
-						for(var i = event.resultIndex; i < event.results.length; i++){
-							var transcript = event.results[i][0].transcript;
-							transcript.replace("\n", "<br>");
-							if(event.results[i].isFinal){
-								finalTranscripts += transcript;
-							}else{
-								interimTranscripts += transcript;
+						speechRecognizer.onresult = function(event){
+							var interimTranscripts = '';
+							for(var i = event.resultIndex; i < event.results.length; i++){
+								var transcript = event.results[i][0].transcript;
+								transcript.replace("\n", "<br>");
+								if(event.results[i].isFinal){
+									finalTranscripts += transcript;
+								}else{
+									interimTranscripts += transcript;
+								}
 							}
-						}
-						r.innerHTML = finalTranscripts + '<span style="color:#999">' + interimTranscripts + '</span>';
-					};
-					speechRecognizer.onerror = function (event) {
-					};
-				}else{
-					r.innerHTML = 'Your browser is not supported. If google chrome, please upgrade!';
+							r.value = finalTranscripts;
+
+		//r.innetHTML = interimTranscripts
+						};
+						speechRecognizer.onerror = function (event) {
+						};
+					}else{
+						r.innerHTML = 'Your browser is not supported. If google chrome, please upgrade!';
+					}
 				}
-			}
-
-			 -->
-
-		</script>
-	</body>
-</html>
+			</script>
+		</body>
+	</html>	
